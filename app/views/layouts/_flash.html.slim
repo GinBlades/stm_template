@@ -1,0 +1,9 @@
+.row
+  .col-lg-12
+    .flash
+      - flash.each do |key, value|
+        - unless key.to_s == 'timedout'
+          p.alert.alert-dismissible class= key
+            button.close type='button' data-dismiss='alert' aria-label='Close'
+              span aria-hidden='true' &times;
+            = value
