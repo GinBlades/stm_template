@@ -6,11 +6,36 @@ AllCops:
     - 'bin/**/*'
     - 'lib/templates/**/*'
     - 'db/schema.rb'
+
+Style/StringLiterals:
+  EnforcedStyle: "double_quotes"
+
 Metrics/LineLength:
   Max: 120
-Documentation:
+  Exclude:
+    - "config/**/*"
+
+Metrics/MethodLength:
+  Exclude:
+    - "db/migrate/*"
+
+Metrics/AbcSize:
+  Exclude:
+    - "db/migrate/*"
+
+Rails/Output:
+  Exclude:
+    - "db/seeds.rb"
+
+Style/AlignHash:
   Enabled: false
-Style/SingleSpaceBeforeFirstArg:
-  Enabled: false
+
 Style/AlignParameters:
+  Enabled: false
+
+Style/BlockComments:
+  Exclude:
+    - "spec/spec_helper.rb"
+
+Style/Documentation:
   Enabled: false
