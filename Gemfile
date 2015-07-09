@@ -27,10 +27,8 @@ group :development, :test do
   gem "simplecov", require: false
 end
 
-gem "dotenv-rails"
 gem "bootstrap-sass"
 gem "autoprefixer-rails"
-gem "font-awesome-rails"
 gem "simple_form"
 gem "modernizr-rails"
 gem "mina"
