@@ -11,7 +11,8 @@ RSpec.describe <%= controller_class_name %>Controller, type: :controller do
     let(:valid_attributes) { attributes_for(:<%= single_table %>, name: 'spec-<%= single_table %>') }
     let(:invalid_attributes) { attributes_for(:<%= single_table %>, name: nil) }
   <% unless options[:singleton] -%>
-  describe "GET #index" do
+
+    describe "GET #index" do
       it "populates an array of all @<%= table_name.pluralize %>" do
         second_<%= single_table %> = create :<%= single_table %>
         get :index
@@ -19,40 +20,44 @@ RSpec.describe <%= controller_class_name %>Controller, type: :controller do
       end
     end
   <% end -%>
-  describe "GET show" do
+
+    describe "GET show" do
       it "assigns the requested <%= single_table %> as @<%= single_table %>" do
         get :show, id: base_<%= single_table %>
         expect(instance_<%= single_table %>).to eq(base_<%= single_table %>)
       end
     end
+
     describe "GET new" do
       it "assigns a new <%= single_table %> as @<%= single_table %>" do
         get :new
         expect(instance_<%= single_table %>).to be_a_new(<%= class_name %>)
       end
     end
+
     describe "GET edit" do
       it "assigns the requested <%= single_table %> as @<%= single_table %>" do
         get :edit, id: base_<%= single_table %>
         expect(instance_<%= single_table %>).to eq(base_<%= single_table %>)
       end
     end
+
     describe "POST create" do
       describe "with valid params" do
         it "creates a new <%= class_name %>" do
-          expect {
-            post :create, <%= single_table %>: attributes_for(:<%= single_table %>)
-          }.to change(<%= class_name %>, :count).by(1)
+          expect do
+            post :create, <%= single_table %>: valid_attributes
+          end.to change(<%= class_name %>, :count).by(1)
         end
 
         it "assigns a newly created <%= single_table %> as @<%= single_table %>" do
-          post :create, <%= single_table %>: attributes_for(:<%= single_table %>)
+          post :create, <%= single_table %>: valid_attributes
           expect(instance_<%= single_table %>).to be_a(<%= class_name %>)
           expect(instance_<%= single_table %>).to be_persisted
         end
 
         it "redirects to the created <%= single_table %>" do
-          post :create, <%= single_table %>: attributes_for(:<%= single_table %>)
+          post :create, <%= single_table %>: valid_attributes
           expect(response).to redirect_to(<%= class_name %>.last)
         end
       end
@@ -100,9 +105,9 @@ RSpec.describe <%= controller_class_name %>Controller, type: :controller do
     describe "DELETE destroy" do
       it "destroys the requested <%= single_table %>" do
         new_<%= single_table %> = create :<%= single_table %>
-        expect {
+        expect do
           delete :destroy, id: new_<%= single_table %>
-        }.to change(<%= class_name %>, :count).by(-1)
+        end.to change(<%= class_name %>, :count).by(-1)
       end
 
       it "redirects to the <%= single_table %> list" do
@@ -110,7 +115,6 @@ RSpec.describe <%= controller_class_name %>Controller, type: :controller do
         expect(response).to redirect_to(<%= table_name.pluralize %>_url)
       end
     end
-
   end
 end
 <% end -%>
