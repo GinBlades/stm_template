@@ -12,5 +12,4 @@
 * Turbolinks
 * Pry
 
-Replace instances of `StmBlog` and `stm_blog`.
-
+Replace instances of `Stm` and `stm`.

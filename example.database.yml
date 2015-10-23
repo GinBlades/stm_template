@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: stm_blog_development
+  database: stm_development
 test:
   <<: *default
-  database: stm_blog_test
+  database: stm_test
