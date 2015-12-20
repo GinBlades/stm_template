@@ -39,3 +39,6 @@ Style/BlockComments:
 
 Style/Documentation:
   Enabled: false
+
+Style/IndentationConsistency:
+  EnforcedStyle: "rails"
